@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package cusomers;
+
+option java_package = "com.bankado.apitechspike.proto";
+option java_multiple_files = true;
+
+message Customer {
+    string firstName = 1;
+    string lastName = 2;
+    string id = 3;
+    string phone = 4;
+    string email = 5;
+}
+
+message CustomerRequest {
+    Customer customer = 1;
+}
+
+message CustomerReply {
+    string reply = 1;
+}
+
+message Customers {
+    repeated Customer customers = 1;
+}
+
+message Empty {}
+
+service CustomerService {
+    rpc Add (CustomerRequest) returns (CustomerReply);
+    rpc Get (Empty) returns (Customers);
+}
